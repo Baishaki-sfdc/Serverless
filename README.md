@@ -4,7 +4,10 @@ Stores from around the world will upload an inventory file to Amazon S3.
 Project team wants to be able to view the inventory levels and send a notification when inventory levels are low.
 ## AWS Services used:
 S3,DynamoDB,Lambda,SNS
-# IAM Role & Permissions
+## Benefits:
+you can run your code on AWS Lambda without needing to pre-allocate servers. With Lambda, you only need to provide the code and define a trigger. The Lambda function can run when it is needed, whether it is once per week or hundreds of times per second. You only pay for what you use.. With Lambda, you only need to provide the code and define a trigger. The Lambda function can run when it is needed, whether it is once per week or hundreds of times per second. You only pay for what you use
+This is a serverless solution that automatically scales when it is used. It also incurs little cost when it is in use. When it is idle, there is practically no cost because will you only be billed for data storage.
+## IAM Role & Permissions
 
 ## Steps:
 • upload an inventory file to an Amazon S3 bucket.
@@ -20,9 +23,9 @@ Stores from around the world provide inventory files to load into the inventory 
 ## Task 3: Testing the loading process
 upload an inventory file, then check that it loaded successfully.
 ## Task 4: Configuring notifications
-You want to notify inventory management staff when a store runs out of stock for an item. For this serverless notification functionality, you will use Amazon SNS.
+notify inventory management staff when a store runs out of stock for an item. For this serverless notification functionality, you will use Amazon SNS.
 ## Task 5: Creating a Lambda function to send notifications
-You could modify the existing Load-Inventory Lambda function to check inventory levels while the file is being loaded. However, this configuration is not a good architectural practice. Instead of overloading the Load-Inventory function with business logic, you will create another Lambda function that is triggered when data is loaded into the DynamoDB table. This function will be triggered by a DynamoDB stream.
+You can modify the existing Load-Inventory Lambda function to check inventory levels while the file is being loaded. However, this configuration is not a good architectural practice. Instead of overloading the Load-Inventory function with business logic, you will create another Lambda function that is triggered when data is loaded into the DynamoDB table. This function will be triggered by a DynamoDB stream.
 ## Task 6: Testing the System
 upload an inventory file to Amazon S3, which will trigger the original Load-Inventory function. This function will load data into DynamoDB, which will then trigger the new Check-Stock Lambda function. If the Lambda function detects an item with zero inventory, it will send a message to Amazon SNS. Then, Amazon SNS will notify you through SMS or email.
 
