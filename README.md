@@ -2,7 +2,8 @@
 ## Scenario:
 . Stores from around the world will upload an inventory file to Amazon S3. 
  Project team wants to be able to view the inventory levels and send a notification when inventory levels are low.
-
+# AWS Services used:
+S3,DynamoDB,Lambda,SNS
 ## Steps:
 •	You will upload an inventory file to an Amazon S3 bucket.
 •	This upload will trigger a Lambda function that will read the file and insert items into an Amazon DynamoDB table.
